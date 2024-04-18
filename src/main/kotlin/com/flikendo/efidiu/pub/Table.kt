@@ -17,11 +17,11 @@ class Table: BasicOperations {
      */
     override fun getTotalPrice(): Double {
         for (drink in drinks) {
-            totalPrice += drink.finalPrice
+            totalPrice += drink.price
         }
 
         for (food in foods) {
-            totalPrice += food.finalPrice
+            totalPrice += food.price
         }
 
         return totalPrice
@@ -53,5 +53,12 @@ class Table: BasicOperations {
      */
     override fun removeFood(food: Food) {
         this.foods.remove(food)
+    }
+
+    /**
+     * Prints ticket
+     */
+    override fun printTicket() {
+        TODO("Not yet implemented")
     }
 }

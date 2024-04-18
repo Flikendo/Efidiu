@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value
 /**
  * This class is used for those items which are drinks
  */
-class Drink(private var id: String, private var name: String, private var price: Double, private var vat: Double,
+class Drink(private var id: String, private var name: String, var price: Double, private var vat: Double,
             private var isAlcoholic: Boolean) : ItemBase(id, name, price, vat) {
 
     @Value("\${flikendo.efidiu.alcoholic.drink.vat}")
