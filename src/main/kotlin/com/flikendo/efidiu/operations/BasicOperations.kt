@@ -35,5 +35,5 @@ interface BasicOperations {
     /**
      * Print ticket
      */
-    fun printTicket()
+    fun printTicket(): String
 }

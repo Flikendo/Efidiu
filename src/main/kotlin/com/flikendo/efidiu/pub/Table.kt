@@ -58,7 +58,7 @@ class Table: BasicOperations {
     /**
      * Prints ticket
      */
-    override fun printTicket() {
-        TODO("Not yet implemented")
+    override fun printTicket(): String {
+        return "Table(drinks = $drinks, foods = $foods, totalPrice = $totalPrice)"
     }
 }
