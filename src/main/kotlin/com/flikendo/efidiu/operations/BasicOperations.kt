@@ -1,4 +1,4 @@
-package com.flikendo.efidiu.pub.operations
+package com.flikendo.efidiu.operations
 
 import com.flikendo.efidiu.items.Drink
 import com.flikendo.efidiu.items.Food

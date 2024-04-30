@@ -1,10 +1,10 @@
-package com.flikendo.efidiu.restaurant.operations
+package com.flikendo.efidiu.operations
 
-interface BasicOperations {
+interface BasicRestaurantOperations: BasicOperations {
     /**
      * Returns total table price. It sums all dishes and menu's of the table
      */
-    fun getTotalPrice()
+    override fun getTotalPrice(): Double
 
     /**
      * Adds a menu to count

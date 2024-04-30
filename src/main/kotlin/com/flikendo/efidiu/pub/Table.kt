@@ -2,7 +2,7 @@ package com.flikendo.efidiu.pub
 
 import com.flikendo.efidiu.items.Drink
 import com.flikendo.efidiu.items.Food
-import com.flikendo.efidiu.pub.operations.BasicOperations
+import com.flikendo.efidiu.operations.BasicOperations
 
 /**
  * This class is used for tables which are in pubs
