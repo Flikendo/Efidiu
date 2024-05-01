@@ -59,6 +59,15 @@ class Table: BasicOperations {
      * Prints ticket
      */
     override fun printTicket(): String {
-        return "Table(drinks = $drinks, foods = $foods, totalPrice = $totalPrice)"
+        return "Table(drinks = ${drinks}, foods = $foods, totalPrice = $totalPrice)"
     }
+
+    /**
+     * Overrides toString() function
+     */
+    override fun toString(): String {
+        return "Table(drinks=$drinks, foods=$foods, totalPrice=$totalPrice)"
+    }
+
+
 }
