@@ -10,15 +10,19 @@ import org.springframework.stereotype.Component
  * This class is used for those items which are drinks
  */
 @Component
-class Drink(var id: String, var name: String, var price: Double, var isAlcoholic: Boolean,
-            @Value("\${drink.alcoholic.vat}") var alcoholic: Double,
-            @Value("\${drink.no.alcoholic.vat}") var noAlcoholic: Double) : ItemBase(id, name, price) {
+class Drink(var id: String, var name: String, var price: Double, var isAlcoholic: Boolean) : ItemBase(id, name, price) {
+    @Value("\${drink.alcoholic.vat}")
+    lateinit var alcoholic: String
+
+    @Value("\${drink.no.alcoholic.vat}")
+    lateinit var noAlcoholic: String
+
 
     /**
      * Applies alcoholic vat or no alcoholic vat
      */
     fun applyVat() {
-        this.price *= if (isAlcoholic) alcoholic else noAlcoholic
+        this.price *= if (isAlcoholic) alcoholic.toDouble() else noAlcoholic.toDouble()
     }
 
     /**
