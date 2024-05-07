@@ -2,24 +2,23 @@ package com.flikendo.efidiu.items
 
 import ItemBase
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.boot.context.properties.ConfigurationProperties
+import org.springframework.context.annotation.Configuration
+import org.springframework.stereotype.Component
 
 /**
  * This class is used for those items which are drinks
  */
-class Drink(private var id: String, private var name: String, var price: Double,
-            var isAlcoholic: Boolean) : ItemBase(id, name, price) {
-
-//    @Value("\${flikendo.efidiu.alcoholic.drink.vat}")
-//    lateinit var alcoholicDrink: String
-//
-//    @Value("\${flikendo.efidiu.no.alcoholic.drink.vat}")
-//    lateinit var noAlcoholicDrink: String
+@Component
+class Drink(var id: String, var name: String, var price: Double, var isAlcoholic: Boolean,
+            @Value("\${drink.alcoholic.vat}") var alcoholic: Double,
+            @Value("\${drink.no.alcoholic.vat}") var noAlcoholic: Double) : ItemBase(id, name, price) {
 
     /**
      * Applies alcoholic vat or no alcoholic vat
      */
     fun applyVat() {
-        this.price *= if (isAlcoholic) 2.0 else 1.0
+        this.price *= if (isAlcoholic) alcoholic else noAlcoholic
     }
 
     /**
@@ -29,6 +28,4 @@ class Drink(private var id: String, private var name: String, var price: Double,
         return "Drink(id='$id', name='$name', price=$price, isAlcoholic=$isAlcoholic,)" //+
 //                " alcoholicDrink='$alcoholicDrink', noAlcoholicDrink='$noAlcoholicDrink')"
     }
-
-
 }

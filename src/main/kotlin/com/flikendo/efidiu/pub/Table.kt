@@ -12,6 +12,7 @@ class Table: BasicOperations {
     private var foods: ArrayList<Food> = arrayListOf()
     private var totalPrice: Double = 0.0
 
+
     /**
      * Returns total price. It sums all drinks items
      */
