@@ -8,10 +8,9 @@ import com.flikendo.efidiu.operations.BasicOperations
  * This class is used for tables which are in pubs
  */
 class Table: BasicOperations {
-    private var drinks: ArrayList<Drink> = arrayListOf()
-    private var foods: ArrayList<Food> = arrayListOf()
+    private val drinks: ArrayList<Drink> = arrayListOf()
+    private val foods: ArrayList<Food> = arrayListOf()
     private var totalPrice: Double = 0.0
-
 
     /**
      * Returns total price. It sums all drinks items
