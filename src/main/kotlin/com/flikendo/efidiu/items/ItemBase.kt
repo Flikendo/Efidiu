@@ -1,6 +1,4 @@
 /**
- * This class is used to be inherited class
+ * This class is used for being an inherited class
  */
-open class ItemBase(private var id: String, private var name: String, private var price: Double) {
-
-}
+open class ItemBase(id: String, name: String, price: Double)

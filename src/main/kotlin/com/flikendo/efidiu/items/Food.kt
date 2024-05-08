@@ -8,14 +8,4 @@ import org.springframework.stereotype.Component
  * This class is used for those items which are food
  */
 @Component
-class Food(private var id: String, private var name: String, var price: Double): ItemBase(id, name, price) {
-    @Value("\${food.vat}")
-    lateinit var foodVat: String
-
-    /**
-     * Applies vat
-     */
-    fun applyVat() {
-        this.price *= foodVat.toDouble()
-    }
-}
+class Food(val id: String, val name: String, val price: Double): ItemBase(id, name, price)
