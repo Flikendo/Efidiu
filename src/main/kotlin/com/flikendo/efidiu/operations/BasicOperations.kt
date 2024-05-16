@@ -10,7 +10,7 @@ interface BasicOperations {
     /**
      * Returns total price. It sums all consumed items
      */
-    fun getTotalPrice(): Double
+    fun calculateTotalPrice(): Double
 
     /**
      * Adds a drink to count

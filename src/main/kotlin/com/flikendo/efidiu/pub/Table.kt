@@ -7,15 +7,12 @@ import com.flikendo.efidiu.operations.BasicOperations
 /**
  * This class is used for tables which are in pubs
  */
-class Table: BasicOperations {
-    private val drinks: ArrayList<Drink> = arrayListOf()
-    private val foods: ArrayList<Food> = arrayListOf()
-    private var totalPrice: Double = 0.0
-
+class Table(val drinks: ArrayList<Drink> = arrayListOf(), val foods: ArrayList<Food> = arrayListOf(),
+            private var totalPrice: Double = 0.0): BasicOperations {
     /**
      * Returns total price. It sums all drinks items
      */
-    override fun getTotalPrice(): Double {
+    override fun calculateTotalPrice(): Double {
         for (drink in drinks) {
             totalPrice += drink.price
         }
@@ -59,15 +56,13 @@ class Table: BasicOperations {
      * Prints ticket
      */
     override fun printTicket(): String {
-        return "Table(drinks = ${drinks}, foods = $foods, totalPrice = $totalPrice)"
+        return "Table(drinks = ${drinks}, foods = $foods, totalPrice = )"
     }
 
     /**
      * Overrides toString() function
      */
     override fun toString(): String {
-        return "Table(drinks=$drinks, foods=$foods, totalPrice=$totalPrice)"
+        return "Table(drinks = $drinks, foods = $foods, totalPrice = )"
     }
-
-
 }

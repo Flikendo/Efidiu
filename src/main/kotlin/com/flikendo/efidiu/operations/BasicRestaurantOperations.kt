@@ -4,7 +4,7 @@ interface BasicRestaurantOperations: BasicOperations {
     /**
      * Returns total table price. It sums all dishes and menu's of the table
      */
-    override fun getTotalPrice(): Double
+    override fun calculateTotalPrice(): Double
 
     /**
      * Adds a menu to count
