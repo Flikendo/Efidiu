@@ -37,7 +37,7 @@ class EfidiuApplicationTests {
 		val table = Table()
 		val drink1 = Drink("1", "Coke", 3.8)
 		val drink2 = Drink("2", "Coke", 3.8)
-		val food1 = Food("1", "Spaguetti", 7.5)
+		val food1 = Food("1", "Spaghetti", 7.5)
 		val food2 = Food("2", "Meatballs", 8.0)
 
 		table.addDrink(drink1)
