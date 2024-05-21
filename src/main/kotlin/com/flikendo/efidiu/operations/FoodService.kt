@@ -13,7 +13,7 @@ class FoodService(val db: JdbcTemplate) {
     /**
      * Look for all drinks
      */
-    fun findFoods(): List<Food> = db.query("select * from drinks") { response, _ ->
+    fun findFoods(): List<Food> = db.query("select * from foods") { response, _ ->
         Food(response.getString("id"),
             response.getString("name"),
             response.getDouble("price")
@@ -25,7 +25,7 @@ class FoodService(val db: JdbcTemplate) {
      */
     fun save(food: Food) {
         db.update(
-            "insert into drinks values ( ?, ?, ? )",
+            "insert into foods values ( ?, ?, ? )",
             food.id, food.name, food.price
         )
     }
