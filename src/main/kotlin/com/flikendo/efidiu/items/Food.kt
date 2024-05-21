@@ -8,4 +8,4 @@ import org.springframework.stereotype.Component
  * This class is used for those items which are food
  */
 @Component
-class Food(val id: String, val name: String, val price: Double): ItemBase(id, name, price)
+data class Food(val id: String, val name: String, val price: Double): ItemBase(id, name, price)

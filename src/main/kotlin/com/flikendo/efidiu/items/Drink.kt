@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component
  * This class is used for those items which are drinks
  */
 @Component
-class Drink(val id: String, val name: String, val price: Double) : ItemBase(id, name, price) {
+data class Drink(val id: String, val name: String, val price: Double) : ItemBase(id, name, price) {
     /**
      * Overrides toString() function
      */
