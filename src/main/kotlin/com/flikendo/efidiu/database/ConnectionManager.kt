@@ -4,13 +4,21 @@ import com.mongodb.ConnectionString
 import com.mongodb.MongoClientSettings
 import com.mongodb.ServerApi
 import com.mongodb.ServerApiVersion
-import com.mongodb.kotlin.client.MongoClient
+import com.mongodb.kotlin.client.coroutine.MongoClient
+import kotlinx.coroutines.runBlocking
 import org.bson.Document
 
 /**
  * Connection manager class
  */
 class ConnectionManager {
+
+//    val connectString = if (System.getenv(connectionEnvVariable) != null) {
+//        System.getenv(connectionEnvVariable)
+//    } else {
+//        "mongodb+srv://<usename>:<password>@cluster0.sq3aiau.mongodb.net/?retryWrites=true&w=majority"
+//    }
+
     val connectionString = "mongodb+srv://Flikendo:Flikendo125@clustera.hbi0mtb.mongodb.net/?retryWrites=true&w=majority&appName=ClusterA"
 
     val serverApi = ServerApi.builder()
@@ -25,7 +33,10 @@ class ConnectionManager {
     // Create a new client and connect to the server
     val client = MongoClient.create(mongoClientSettings).use { mongoClient ->
         val database = mongoClient.getDatabase("admin")
-        database.runCommand(Document("ping", 1))
+
+        runBlocking {
+            database.runCommand(Document("ping", 1))
+        }
 
         println("Pinged your deployment. You successfully connected to MongoDB!")
     }
