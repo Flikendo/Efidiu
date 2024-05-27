@@ -1,4 +1,8 @@
 package com.flikendo.efidiu.database
 
-class DrinkTable {
+/**
+ * This class is used for Mongo table
+ */
+@Table("Drink")
+data class DrinkTable {
 }
