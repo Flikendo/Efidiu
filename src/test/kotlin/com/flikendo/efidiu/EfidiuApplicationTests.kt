@@ -2,6 +2,7 @@ package com.flikendo.efidiu
 
 import com.flikendo.efidiu.items.Drink
 import com.flikendo.efidiu.items.Food
+import com.flikendo.efidiu.operations.DrinkService
 import com.flikendo.efidiu.pub.Table
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

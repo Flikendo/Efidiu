@@ -10,27 +10,4 @@ import org.springframework.stereotype.Service
  * This class is used for Mongo CRUD operations
  */
 @Service
-class FoodService(val mongoDatabase: MongoDatabase) {
-    /**
-     * Store a food in MongoDB
-     */
-    suspend fun storeFood(food: Food) {
-        mongoDatabase
-            .getCollection<Food>(FOODS_DOCUMENT)
-            .insertOne(food).also {
-                println("$INSERTED_FOOD_LOG ${it.insertedId}")
-            }
-    }
-
-    /**
-     * Store foods in MongoDB
-     */
-    suspend fun storeFoods(foods: ArrayList<Food>) {
-        mongoDatabase
-            .getCollection<Food>(FOODS_DOCUMENT)
-            .insertMany(foods).also {
-                println("$INSERTED_FOOD_LOG ${it.insertedIds}")
-            }
-
-    }
-}
+class FoodService(mongoDatabase: MongoDatabase): BasicItemService(mongoDatabase)

@@ -1,9 +1,18 @@
 package com.flikendo.efidiu
 
 /**
- * MongoDB
+ * MongoDB documents for clients
  */
 const val DRINKS_DOCUMENT = "Drinks"
-const val INSERTED_DRINK_LOG = "Inserted drink Id -"
 const val FOODS_DOCUMENT = "Foods"
-const val INSERTED_FOOD_LOG = "Inserted food Id -"
+
+/**
+ * MongoDB documents
+ */
+const val REGISTERED_DRINKS_DOCUMENT = "Registered_Drinks"
+const val REGISTERED_FOODS_DOCUMENT = "Registered_Foods"
+
+/**
+ * Logs
+ */
+const val INSERTED_LOG = "Inserted Id -"

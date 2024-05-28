@@ -9,27 +9,4 @@ import org.springframework.stereotype.Service
  * This class is used for Mongo CRUD operations
  */
 @Service
-class DrinkService(val mongoDatabase: MongoDatabase) {
-    /**
-     * Store a drink in MongoDB
-     */
-    suspend fun storeDrink(drink: Drink) {
-        mongoDatabase
-            .getCollection<Drink>(DRINKS_DOCUMENT)
-            .insertOne(drink).also {
-                println("$INSERTED_DRINK_LOG ${it.insertedId}")
-            }
-    }
-
-    /**
-     * Store drinks in MongoDB
-     */
-    suspend fun storeDrinks(drinks: ArrayList<Drink>) {
-        mongoDatabase
-            .getCollection<Drink>(DRINKS_DOCUMENT)
-            .insertMany(drinks).also {
-                println("$INSERTED_DRINK_LOG ${it.insertedIds}")
-            }
-
-    }
-}
+class DrinkService(mongoDatabase: MongoDatabase): BasicItemService(mongoDatabase)
