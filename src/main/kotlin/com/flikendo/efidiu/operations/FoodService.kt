@@ -1,44 +1,36 @@
 package com.flikendo.efidiu.operations
 
-import com.flikendo.efidiu.ID_LABEL
-import com.flikendo.efidiu.NAME_LABEL
-import com.flikendo.efidiu.PRICE_LABEL
+import com.flikendo.efidiu.*
+import com.flikendo.efidiu.items.Drink
 import com.flikendo.efidiu.items.Food
-import org.springframework.jdbc.core.JdbcTemplate
+import com.mongodb.kotlin.client.coroutine.MongoDatabase
 import org.springframework.stereotype.Service
 
 /**
  * This class is used for Mongo CRUD operations
  */
 @Service
-class FoodService(val db: JdbcTemplate) {
+class FoodService(val mongoDatabase: MongoDatabase) {
     /**
-     * Look for all foods
+     * Store a food in MongoDB
      */
-    fun findFoods(): List<Food> = db.query("select * from foods") { response, _ ->
-        Food(response.getString(ID_LABEL),
-            response.getString(NAME_LABEL),
-            response.getDouble(PRICE_LABEL)
-        )
+    suspend fun storeFood(food: Food) {
+        mongoDatabase
+            .getCollection<Food>(FOODS_DOCUMENT)
+            .insertOne(food).also {
+                println("$INSERTED_FOOD_LOG ${it.insertedId}")
+            }
     }
 
     /**
-     * Stores a food in database
+     * Store foods in MongoDB
      */
-    fun save(food: Food) {
-        db.update(
-            "insert into foods values ( ?, ?, ? )",
-            food.id, food.name, food.price
-        )
-    }
+    suspend fun storeFoods(foods: ArrayList<Food>) {
+        mongoDatabase
+            .getCollection<Food>(FOODS_DOCUMENT)
+            .insertMany(foods).also {
+                println("$INSERTED_FOOD_LOG ${it.insertedIds}")
+            }
 
-    /**
-     * Removes food from database
-     */
-    fun remove(food: Food) = db.query("delete * from foods") { response, _ ->
-        Food(response.getString(ID_LABEL),
-            response.getString(NAME_LABEL),
-            response.getDouble(PRICE_LABEL)
-        )
     }
 }

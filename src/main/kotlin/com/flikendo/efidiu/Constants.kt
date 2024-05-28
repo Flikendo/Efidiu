@@ -1,17 +1,9 @@
 package com.flikendo.efidiu
 
 /**
- * Contains all constants
- */
-// Drink queries
-const val ID_LABEL = "id"
-const val NAME_LABEL = "name"
-const val PRICE_LABEL = "price"
-
-
-/**
  * MongoDB
  */
 const val DRINKS_DOCUMENT = "Drinks"
-const val FOODS_DOCUMENT = "Drinks"
-const val INSERTED_LOG = "Inserted Id -"
+const val INSERTED_DRINK_LOG = "Inserted drink Id -"
+const val FOODS_DOCUMENT = "Foods"
+const val INSERTED_FOOD_LOG = "Inserted food Id -"

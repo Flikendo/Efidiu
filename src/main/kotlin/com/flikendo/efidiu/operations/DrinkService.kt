@@ -17,7 +17,7 @@ class DrinkService(val mongoDatabase: MongoDatabase) {
         mongoDatabase
             .getCollection<Drink>(DRINKS_DOCUMENT)
             .insertOne(drink).also {
-                println("${INSERTED_LOG} ${it.insertedId}")
+                println("$INSERTED_DRINK_LOG ${it.insertedId}")
             }
     }
 
@@ -28,7 +28,7 @@ class DrinkService(val mongoDatabase: MongoDatabase) {
         mongoDatabase
             .getCollection<Drink>(DRINKS_DOCUMENT)
             .insertMany(drinks).also {
-                println("${INSERTED_LOG} ${it.insertedIds}")
+                println("$INSERTED_DRINK_LOG ${it.insertedIds}")
             }
 
     }
