@@ -1,5 +1,6 @@
 package com.flikendo.efidiu
 
+import com.flikendo.efidiu.database.ConnectionManager
 import com.flikendo.efidiu.items.Drink
 import com.flikendo.efidiu.items.Food
 import com.flikendo.efidiu.operations.DrinkService
@@ -47,5 +48,12 @@ class EfidiuApplicationTests {
 		table.addFood(food2)
 
 		assertEquals(drink1.price + drink2.price + food1.price + food2.price, table.calculateTotalPrice())
+	}
+
+	@Test
+	fun connectToMongo() {
+		val connectionManager = ConnectionManager()
+
+		connectionManager.connect()
 	}
 }
