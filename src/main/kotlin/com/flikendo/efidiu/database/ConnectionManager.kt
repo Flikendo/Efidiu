@@ -13,31 +13,27 @@ import org.bson.Document
  */
 class ConnectionManager {
 
-//    val connectString = if (System.getenv(connectionEnvVariable) != null) {
-//        System.getenv(connectionEnvVariable)
-//    } else {
-//        "mongodb+srv://<usename>:<password>@cluster0.sq3aiau.mongodb.net/?retryWrites=true&w=majority"
-//    }
+    fun connect() {
+        val connectionString = "mongodb+srv://Flikendo:Flikendo125@clustera.hbi0mtb.mongodb.net/?retryWrites=true&w=majority&appName=ClusterA"
 
-    val connectionString = "mongodb+srv://Flikendo:Flikendo125@clustera.hbi0mtb.mongodb.net/?retryWrites=true&w=majority&appName=ClusterA"
+        val serverApi = ServerApi.builder()
+            .version(ServerApiVersion.V1)
+            .build()
 
-    val serverApi = ServerApi.builder()
-        .version(ServerApiVersion.V1)
-        .build()
+        val mongoClientSettings = MongoClientSettings.builder()
+            .applyConnectionString(ConnectionString(connectionString))
+            .serverApi(serverApi)
+            .build()
 
-    val mongoClientSettings = MongoClientSettings.builder()
-        .applyConnectionString(ConnectionString(connectionString))
-        .serverApi(serverApi)
-        .build()
+        // Create a new client and connect to the server
+        val client = MongoClient.create(mongoClientSettings).use { mongoClient ->
+            val database = mongoClient.getDatabase("admin")
 
-    // Create a new client and connect to the server
-    val client = MongoClient.create(mongoClientSettings).use { mongoClient ->
-        val database = mongoClient.getDatabase("admin")
+            runBlocking {
+                database.runCommand(Document("ping", 1))
+            }
 
-        runBlocking {
-            database.runCommand(Document("ping", 1))
+            println("Pinged your deployment. You successfully connected to MongoDB!")
         }
-
-        println("Pinged your deployment. You successfully connected to MongoDB!")
     }
 }
