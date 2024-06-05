@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component
 @Document("drinks")
 data class Drink(
     @Id val id: String,
-    @Field val name: String,
-    val price: Double) : ItemBase(id, name, price) {
+    @Field var name: String,
+    var price: Double) : ItemBase(id, name, price) {
 
     /**
      * Overrides toString() function
