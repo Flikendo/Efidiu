@@ -1,5 +1,6 @@
 package com.flikendo.efidiu.database
 
+import ItemBase
 import com.flikendo.efidiu.items.Drink
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -8,42 +9,42 @@ import org.springframework.stereotype.Service
  * Service for drink items
  */
 @Service
-class DrinkService(@Autowired val drinkRepository: DrinkRepository) {
+class DrinkService(@Autowired val itemRepository: ItemRepository) {
     /**
      * Adds a drink in MongoDB
      */
-    fun addDrink(drink: Drink): Drink = drinkRepository.insert(drink)
+    fun addItem(itemBase: ItemBase): ItemBase = itemRepository.insert(itemBase)
 
     /**
      * Updates a drink in MongoDB
      */
-    fun updateDrink(drink: Drink){
-        val savedDrink: Drink = drinkRepository
-            .findById(drink.id)
-            .orElseThrow { throw RuntimeException("Cannot find Drink by ID") }
+    fun updateItem(itemBase: ItemBase){
+        val savedDrink: ItemBase = itemRepository
+            .findById(itemBase.id)
+            .orElseThrow { throw RuntimeException("Cannot find Item by ID") }
 
-        savedDrink.name = drink.name
-        savedDrink.price = drink.price
+        savedDrink.name = itemBase.name
+        savedDrink.price = itemBase.price
 
-        drinkRepository.save(savedDrink)
+        itemRepository.save(savedDrink)
     }
 
     /**
      * Gets all drinks
      */
-    fun getAllDrinks() : List<Drink> = drinkRepository.findAll()
+    fun getAllItems() : List<ItemBase> = itemRepository.findAll()
 
     /**
      * Gets drinks by name
      */
-    fun getDrinkByName(name:String): Drink = drinkRepository
+    fun getItemByName(name:String): ItemBase = itemRepository
         .findByName(name)
         .orElseThrow{
-            throw RuntimeException("Cannot find Drink by Name")
+            throw RuntimeException("Cannot find Item by Name")
         }
 
     /**
      * Deletes a drink
      */
-    fun deleteDrink(id: String) = drinkRepository.deleteById(id)
+    fun deleteDrink(id: String) = itemRepository.deleteById(id)
 }

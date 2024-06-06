@@ -1,16 +1,16 @@
 package com.flikendo.efidiu.database
 
-import com.flikendo.efidiu.items.Drink
-import org.springframework.stereotype.Repository
+import ItemBase
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.data.mongodb.repository.Query
+import org.springframework.stereotype.Repository
 import java.util.*
 
 /**
- * Repository for drink items
+ * Repository for items
  */
 @Repository
-interface DrinkRepository: MongoRepository<Drink, String>  {
+interface ItemRepository: MongoRepository<ItemBase, String>  {
     @Query("{'name': ?0}")
-    fun findByName(name: String): Optional<Drink>
+    fun findByName(name: String): Optional<ItemBase>
 }
