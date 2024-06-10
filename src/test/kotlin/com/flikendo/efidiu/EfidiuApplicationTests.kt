@@ -1,13 +1,10 @@
 package com.flikendo.efidiu
 
-import com.flikendo.efidiu.database.ConnectionManager
 import com.flikendo.efidiu.items.Drink
 import com.flikendo.efidiu.items.Food
-import com.flikendo.efidiu.operations.DrinkService
 import com.flikendo.efidiu.pub.Table
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
 
 class EfidiuApplicationTests {
 	@Test
@@ -48,12 +45,5 @@ class EfidiuApplicationTests {
 		table.addFood(food2)
 
 		assertEquals(drink1.price + drink2.price + food1.price + food2.price, table.calculateTotalPrice())
-	}
-
-	@Test
-	fun connectToMongo() {
-		val connectionManager = ConnectionManager()
-
-		connectionManager.connect()
 	}
 }

@@ -12,6 +12,6 @@ import org.springframework.stereotype.Component
 @Component
 @Document("foods")
 data class Food(
-    @Id val id: String,
-    @Field var name: String,
-    var price: Double): ItemBase(id, name, price)
+    @Id override val id: String,
+    @Field override var name: String,
+    override var price: Double): ItemBase(id, name, price)
